@@ -127,10 +127,16 @@ function cmhello_users_search_order($obj){
 
 function wizhi_restrict_admin() {
     if ( ! current_user_can( 'delete_pages' )  && $_SERVER['PHP_SELF'] != '/wp-admin/admin-ajax.php' ) {
-        wp_redirect( 'https://qinmei.video/user' );
+        wp_redirect( $general_options["qinmei_allow_site_web"] );
     }
 }
 add_action( 'admin_init', 'wizhi_restrict_admin', 1 );
+
+add_action('login_enqueue_scripts','login_protection');
+
+function login_protection(){
+  wp_redirect(site_url());
+}
 
 
 
