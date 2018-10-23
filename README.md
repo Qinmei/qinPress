@@ -40,4 +40,3 @@
 |cure	      | 治愈番剧合集                      |
 |depress  	| 致郁番剧合集                      |
 |world	    | 异界番剧合集                      |
->>>>>>> 0b73b6a82218f407cd9d2ae9ab966d1d9d0aeead
