@@ -185,38 +185,43 @@ function get_play_link_info($request){
   $showplay = false;
 
   $general_options = get_option('ashuwp_general');
-
-  $qinmeibasetime = $general_options["qinmei_play_leve0_time"];
-  $qinmeibasesecret = $general_options["qinmei_play_leve0_key"];
-  $qinmeibaselink = $general_options["qinmei_play_leve0_link"];
+  $qinmeibaselevel = $general_options["qinmei_play_leve0"];
+  $qinmeibasetime = $qinmeibaselevel["qinmei_play_leve0_time"];
+  $qinmeibasesecret = $qinmeibaselevel["qinmei_play_leve0_key"];
+  $qinmeibaselink = $qinmeibaselevel["qinmei_play_leve0_link"];
 
   if ( is_user_logged_in()){
-      $qinmeibasetime = $general_options["qinmei_play_leve1_time"];
-      $qinmeibasesecret = $general_options["qinmei_play_leve1_key"];
-      $qinmeibaselink = $general_options["qinmei_play_leve1_link"];
+	  $qinmeibaselevel = $general_options["qinmei_play_leve1"];
+	  $qinmeibasetime = $qinmeibaselevel["qinmei_play_leve1_time"];
+	  $qinmeibasesecret = $qinmeibaselevel["qinmei_play_leve1_key"];
+	  $qinmeibaselink = $qinmeibaselevel["qinmei_play_leve1_link"];
   };  
   if (current_user_can('delete_posts')){
-      $qinmeibasetime = $general_options["qinmei_play_leve2_time"];
-      $qinmeibasesecret = $general_options["qinmei_play_leve2_key"];
-      $qinmeibaselink = $general_options["qinmei_play_leve2_link"];
+	  $qinmeibaselevel = $general_options["qinmei_play_leve2"];
+	  $qinmeibasetime = $qinmeibaselevel["qinmei_play_leve2_time"];
+	  $qinmeibasesecret = $qinmeibaselevel["qinmei_play_leve2_key"];
+	  $qinmeibaselink = $qinmeibaselevel["qinmei_play_leve2_link"];
   };
 
   if (current_user_can('publish_posts')){
-      $qinmeibasetime = $general_options["qinmei_play_leve3_time"];
-      $qinmeibasesecret = $general_options["qinmei_play_leve3_key"];
-      $qinmeibaselink = $general_options["qinmei_play_leve3_link"];
+	  $qinmeibaselevel = $general_options["qinmei_play_leve3"];
+	  $qinmeibasetime = $qinmeibaselevel["qinmei_play_leve3_time"];
+	  $qinmeibasesecret = $qinmeibaselevel["qinmei_play_leve3_key"];
+	  $qinmeibaselink = $qinmeibaselevel["qinmei_play_leve3_link"];
   };
 
   if (current_user_can('publish_pages')){
-      $qinmeibasetime = $general_options["qinmei_play_leve4_time"];
-      $qinmeibasesecret = $general_options["qinmei_play_leve4_key"];
-      $qinmeibaselink = $general_options["qinmei_play_leve4_link"];
+	  $qinmeibaselevel = $general_options["qinmei_play_leve4"];
+	  $qinmeibasetime = $qinmeibaselevel["qinmei_play_leve4_time"];
+	  $qinmeibasesecret = $qinmeibaselevel["qinmei_play_leve4_key"];
+	  $qinmeibaselink = $qinmeibaselevel["qinmei_play_leve4_link"];
   };
 
   if (current_user_can('manage_options')){
-      $qinmeibasetime = $general_options["qinmei_play_leve5_time"];
-      $qinmeibasesecret = $general_options["qinmei_play_leve5_key"];
-      $qinmeibaselink = $general_options["qinmei_play_leve5_link"];
+	  $qinmeibaselevel = $general_options["qinmei_play_leve5"];
+	  $qinmeibasetime = $qinmeibaselevel["qinmei_play_leve5_time"];
+	  $qinmeibasesecret = $qinmeibaselevel["qinmei_play_leve5_key"];
+	  $qinmeibaselink = $qinmeibaselevel["qinmei_play_leve5_link"];
   };
 
   switch ($playlimit) {
