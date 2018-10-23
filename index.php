@@ -141,7 +141,7 @@ if (!$user_ID) { //判断用户是否登录
 					var input_data = $('#wp_login_form').serialize();   
 					$.ajax({   
 						type: "POST",   
-						url:  "<?php echo  $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']; ?>",   
+						url:  "",   
 						data: input_data,   
 						success: function(msg){   
 							$('#result').empty();
