@@ -829,6 +829,7 @@ $ashu_options[] = array(
 );
 
 
+
 $ashu_options[] = array(
   'name' => '默认解析接口',
   'id'   => 'qinmei_play_jiexi1',
@@ -862,6 +863,195 @@ $ashu_options[] = array(
   'multiple' => true,
   'type' => 'group'
 );
+
+
+
+$ashu_options[] = array(
+  'name' => '游客播放地址',
+  'id'   => 'qinmei_play_leve0',
+  'desc' => '',
+  'std'  => '',
+  'subtype' => array(
+    array(
+      'name' => '地址前缀',
+      'id'   => 'qinmei_play_leve0_link',
+      'desc' => '地址前缀,仅支持直链的播放方式，解析则会采用正则',
+      'std'  => '',
+      'type' => 'text'
+    ),
+    array(
+      'name' => '加密key',
+      'id'   => 'qinmei_play_leve0_key',
+      'desc' => '加密key',
+      'std'  => '',
+      'type' => 'text'
+    ),
+    array(
+      'name' => '过期时间',
+      'id'   => 'qinmei_play_leve0_time',
+      'desc' => '过期时间',
+      'std'  => '',
+      'type' => 'text'
+    ),
+  ),
+  'type' => 'group' //Look here.
+);
+
+$ashu_options[] = array(
+  'name' => '订阅者播放地址',
+  'id'   => 'qinmei_play_leve1',
+  'desc' => '',
+  'std'  => '',
+  'subtype' => array(
+    array(
+      'name' => '地址前缀',
+      'id'   => 'qinmei_play_leve1_link',
+      'desc' => '地址前缀,仅支持直链的播放方式，解析则会采用正则',
+      'std'  => '',
+      'type' => 'text'
+    ),
+    array(
+      'name' => '加密key',
+      'id'   => 'qinmei_play_leve1_key',
+      'desc' => '加密key',
+      'std'  => '',
+      'type' => 'text'
+    ),
+    array(
+      'name' => '过期时间',
+      'id'   => 'qinmei_play_leve1_time',
+      'desc' => '过期时间',
+      'std'  => '',
+      'type' => 'text'
+    ),
+  ),
+  'type' => 'group' //Look here.
+);
+
+$ashu_options[] = array(
+  'name' => '投稿者播放地址',
+  'id'   => 'qinmei_play_leve2',
+  'desc' => '',
+  'std'  => '',
+  'subtype' => array(
+    array(
+      'name' => '地址前缀',
+      'id'   => 'qinmei_play_leve2_link',
+      'desc' => '地址前缀,仅支持直链的播放方式，解析则会采用正则',
+      'std'  => '',
+      'type' => 'text'
+    ),
+    array(
+      'name' => '加密key',
+      'id'   => 'qinmei_play_leve2_key',
+      'desc' => '加密key',
+      'std'  => '',
+      'type' => 'text'
+    ),
+    array(
+      'name' => '过期时间',
+      'id'   => 'qinmei_play_leve2_time',
+      'desc' => '过期时间',
+      'std'  => '',
+      'type' => 'text'
+    ),
+  ),
+  'type' => 'group' //Look here.
+);
+
+$ashu_options[] = array(
+  'name' => '作者播放地址',
+  'id'   => 'qinmei_play_leve3',
+  'desc' => '',
+  'std'  => '',
+  'subtype' => array(
+    array(
+      'name' => '地址前缀',
+      'id'   => 'qinmei_play_leve3_link',
+      'desc' => '地址前缀,仅支持直链的播放方式，解析则会采用正则',
+      'std'  => '',
+      'type' => 'text'
+    ),
+    array(
+      'name' => '加密key',
+      'id'   => 'qinmei_play_leve3_key',
+      'desc' => '加密key',
+      'std'  => '',
+      'type' => 'text'
+    ),
+    array(
+      'name' => '过期时间',
+      'id'   => 'qinmei_play_leve3_time',
+      'desc' => '过期时间',
+      'std'  => '',
+      'type' => 'text'
+    ),
+  ),
+  'type' => 'group' //Look here.
+);
+
+$ashu_options[] = array(
+  'name' => '编辑播放地址',
+  'id'   => 'qinmei_play_leve4',
+  'desc' => '',
+  'std'  => '',
+  'subtype' => array(
+    array(
+      'name' => '地址前缀',
+      'id'   => 'qinmei_play_leve4_link',
+      'desc' => '地址前缀,仅支持直链的播放方式，解析则会采用正则',
+      'std'  => '',
+      'type' => 'text'
+    ),
+    array(
+      'name' => '加密key',
+      'id'   => 'qinmei_play_leve4_key',
+      'desc' => '加密key',
+      'std'  => '',
+      'type' => 'text'
+    ),
+    array(
+      'name' => '过期时间',
+      'id'   => 'qinmei_play_leve4_time',
+      'desc' => '过期时间',
+      'std'  => '',
+      'type' => 'text'
+    ),
+  ),
+  'type' => 'group' //Look here.
+);
+
+$ashu_options[] = array(
+  'name' => '管理员播放地址',
+  'id'   => 'qinmei_play_leve5',
+  'desc' => '',
+  'std'  => '',
+  'subtype' => array(
+    array(
+      'name' => '地址前缀',
+      'id'   => 'qinmei_play_leve5_link',
+      'desc' => '地址前缀,仅支持直链的播放方式，解析则会采用正则',
+      'std'  => '',
+      'type' => 'text'
+    ),
+    array(
+      'name' => '加密key',
+      'id'   => 'qinmei_play_leve5_key',
+      'desc' => '加密key',
+      'std'  => '',
+      'type' => 'text'
+    ),
+    array(
+      'name' => '过期时间',
+      'id'   => 'qinmei_play_leve5_time',
+      'desc' => '过期时间',
+      'std'  => '',
+      'type' => 'text'
+    ),
+  ),
+  'type' => 'group' //Look here.
+);
+
 
 
 

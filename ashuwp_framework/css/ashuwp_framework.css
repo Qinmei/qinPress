@@ -451,3 +451,11 @@ ul.nav-tabs li.ui-tabs-active a:hover {
 #qinmei_animate_add_start{
   display: none;
 }
+
+#tab_qinmei_play .field_group .ashuwp_field_area{
+  padding-left: 0;
+}
+
+#tab_qinmei_play .field_group  .ashuwp_field.ashuwp_text_field:nth-child(1){
+  width:50%;
+};

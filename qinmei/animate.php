@@ -183,11 +183,40 @@ function get_play_link_info($request){
   };
 
   $showplay = false;
-  $secret = 'qinling163997';
-  $qinmeibase = "https://video.qinmei.org"; 
-  if (is_user_logged_in() && current_user_can('delete_posts')){
-      $secret = 'qinlingvip';
-      $qinmeibase = "https://vip.qinmei.video";
+
+  $general_options = get_option('ashuwp_general');
+
+  $qinmeibasetime = $general_options["qinmei_play_leve0_time"];
+  $qinmeibasesecret = $general_options["qinmei_play_leve0_key"];
+  $qinmeibaselink = $general_options["qinmei_play_leve0_link"];
+
+  if ( is_user_logged_in()){
+      $qinmeibasetime = $general_options["qinmei_play_leve1_time"];
+      $qinmeibasesecret = $general_options["qinmei_play_leve1_key"];
+      $qinmeibaselink = $general_options["qinmei_play_leve1_link"];
+  };  
+  if (current_user_can('delete_posts')){
+      $qinmeibasetime = $general_options["qinmei_play_leve2_time"];
+      $qinmeibasesecret = $general_options["qinmei_play_leve2_key"];
+      $qinmeibaselink = $general_options["qinmei_play_leve2_link"];
+  };
+
+  if (current_user_can('publish_posts')){
+      $qinmeibasetime = $general_options["qinmei_play_leve3_time"];
+      $qinmeibasesecret = $general_options["qinmei_play_leve3_key"];
+      $qinmeibaselink = $general_options["qinmei_play_leve3_link"];
+  };
+
+  if (current_user_can('publish_pages')){
+      $qinmeibasetime = $general_options["qinmei_play_leve4_time"];
+      $qinmeibasesecret = $general_options["qinmei_play_leve4_key"];
+      $qinmeibaselink = $general_options["qinmei_play_leve4_link"];
+  };
+
+  if (current_user_can('manage_options')){
+      $qinmeibasetime = $general_options["qinmei_play_leve5_time"];
+      $qinmeibasesecret = $general_options["qinmei_play_leve5_key"];
+      $qinmeibaselink = $general_options["qinmei_play_leve5_link"];
   };
 
   switch ($playlimit) {
@@ -225,15 +254,14 @@ function get_play_link_info($request){
   }
 
   if($showplay == true){
-    $showuserlink = '';
 
     if($setting == true){
 
       $totallink = $baseaddress.$playlink;
 
       $path   = $totallink;
-
-      $validtime = 3600;
+      $secret = $qinmeibasesecret;
+      $validtime = $qinmeibasetime;
       $expire = time() + $validtime; 
 
       $md5 = base64_encode(md5($secret . $path . $expire, true));
@@ -242,11 +270,31 @@ function get_play_link_info($request){
 
       $uri = $path . '?st=' . $md5 . '&e=' . $expire;
 
-      $showuserlink = $qinmeibase.$uri;
-
+      $showuserlink = $qinmeibaselink.$uri;
 
     }else{
-      $showuserlink = $baseaddress.$playlink;
+
+        $patterns = $general_options['qinmei_play_jiexi_pattern'];
+        $jiexiarr =array();
+        $patterncount = 0;
+        if(!empty($patterns)){
+          foreach($patterns as $pattern){
+              $pattern_p = $pattern['qinmei_play_jiexi_pattern_p'];
+              if (preg_match($pattern_p,$str)) {
+                $jiexiarr[] = $pattern['qinmei_play_jiexi_pattern_j'];
+                $patterncount ++;
+              };
+          };
+          if($patterncount == 0){
+            $jiexi = $general_options['qinmei_play_jiexi1'];
+          }else{
+            $jiexi = $jiexiarr[array_rand($jiexiarr,1)];
+          }
+        }else{
+          $jiexi = $general_options['qinmei_play_jiexi1'];
+        }
+
+      $showuserlink = $jiexi.$playlink;
     }
   }else{
     $showuserlink = '404';
