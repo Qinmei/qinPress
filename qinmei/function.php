@@ -238,7 +238,8 @@ foreach ( $data['qinmei2021'] as $unit ){
     if(!empty($bangumiid)){
       $url = 'https://api.qinmei.org';
       $posts = array('url'=>$bangumiid,
-                     'type'=>'bgm'
+                     'type'=>'bgm',
+                     'kind'=>'index'
                      );
       $data = json_decode(request($url,$posts),true);
       if($data['name_cn'] !== ''){
@@ -284,31 +285,31 @@ foreach ( $data['qinmei2021'] as $unit ){
 
        if(!empty( $qqid)){
         $geturl = 'https://v.qq.com/detail/'.$qqid.'.html';
-        $retval = request($apiurl,$posts = array('url'=>$geturl,'type'=>'qq'));
+        $retval = request($apiurl,$posts = array('kind'=>'index','url'=>$geturl,'type'=>'qq'));
         if($retval !== false){
           $eps = json_decode($retval,true);
         }
       }else if(!empty( $letvid)){
         $geturl = 'https://www.le.com/comic/'.$letvid.'.html';
-        $retval = request($apiurl,$posts = array('url'=>$geturl,'type'=>'letv'));
+        $retval = request($apiurl,$posts = array('kind'=>'index','url'=>$geturl,'type'=>'letv'));
         if($retval !== false){
           $eps = json_decode($retval,true);
         }
       }else if(!empty( $pptvid)){
         $geturl = 'http://v.pptv.com/page/'.$pptvid.'.html';
-        $retval = request($apiurl,$posts = array('url'=>$geturl,'type'=>'pptv'));
+        $retval = request($apiurl,$posts = array('kind'=>'index','url'=>$geturl,'type'=>'pptv'));
         if($retval !== false){
           $eps = json_decode($retval,true);
         }
       }else if(!empty( $bilibiliid)){
         $geturl = 'https://bangumi.bilibili.com/anime/'.$bilibiliid;
-        $retval = request($apiurl,$posts = array('url'=>$geturl,'type'=>'bilibili'));
+        $retval = request($apiurl,$posts = array('kind'=>'index','url'=>$geturl,'type'=>'bilibili'));
         if($retval !== false){
           $eps = json_decode($retval,true);
         }
       }else if(!empty( $iqiyiid)){
         $geturl = 'https://www.iqiyi.com/'.$iqiyiid.'.html';
-        $retval = request($apiurl,$posts = array('url'=>$geturl,'type'=>'iqiyi'));
+        $retval = request($apiurl,$posts = array('kind'=>'index','url'=>$geturl,'type'=>'iqiyi'));
         if($retval !== false){
           $eps = json_decode($retval,true);
         }
@@ -475,7 +476,7 @@ function qinmei_update(){
     if(!empty($dilidili)){
      $dilieposide =array();
 
-      $retval = request($apiurl,$posts = array('url'=>$dilidili,'type'=>'dilidili'));
+      $retval = request($apiurl,$posts = array('url'=>$dilidili,'type'=>'dilidili','kind'=>'index'));
       if($retval !== false){
           $dililist = json_decode($retval,true);
           foreach($dililist as $list){
@@ -504,31 +505,31 @@ function qinmei_update(){
       $bilibiliid = get_post_meta($ID,"baseinfo_play_bilibili",true);
       if(!empty( $qqid)){
         $geturl = 'https://v.qq.com/detail/'.$qqid.'.html';
-        $retval = request($apiurl,$posts = array('url'=>$geturl,'type'=>'qq'));
+        $retval = request($apiurl,$posts = array('kind'=>'index','url'=>$geturl,'type'=>'qq'));
         if($retval !== false){
           $eps = json_decode($retval,true);
         }
       }else if(!empty( $letvid)){
         $geturl = 'https://www.le.com/comic/'.$letvid.'.html';
-        $retval = request($apiurl,$posts = array('url'=>$geturl,'type'=>'letv'));
+        $retval = request($apiurl,$posts = array('kind'=>'index','url'=>$geturl,'type'=>'letv'));
         if($retval !== false){
           $eps = json_decode($retval,true);
         }
       }else if(!empty( $pptvid)){
         $geturl = 'http://v.pptv.com/page/'.$pptvid.'.html';
-        $retval = request($apiurl,$posts = array('url'=>$geturl,'type'=>'pptv'));
+        $retval = request($apiurl,$posts = array('kind'=>'index','url'=>$geturl,'type'=>'pptv'));
         if($retval !== false){
           $eps = json_decode($retval,true);
         }
       }else if(!empty( $bilibiliid)){
         $geturl = 'https://bangumi.bilibili.com/anime/'.$bilibiliid;
-        $retval = request($apiurl,$posts = array('url'=>$geturl,'type'=>'bilibili'));
+        $retval = request($apiurl,$posts = array('kind'=>'index','url'=>$geturl,'type'=>'bilibili'));
         if($retval !== false){
           $eps = json_decode($retval,true);
         }
       }else if(!empty( $iqiyiid)){
         $geturl = 'https://www.iqiyi.com/'.$iqiyiid.'.html';
-        $retval = request($apiurl,$posts = array('url'=>$geturl,'type'=>'iqiyi'));
+        $retval = request($apiurl,$posts = array('kind'=>'index','url'=>$geturl,'type'=>'iqiyi'));
         if($retval !== false){
           $eps = json_decode($retval,true);
         }

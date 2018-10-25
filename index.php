@@ -43,6 +43,7 @@ if (!$user_ID) { //判断用户是否登录
 	<head>
 		<meta charset="UTF-8">
 		<title>Qinmei</title>
+      	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
 		<link rel="stylesheet" href="//at.alicdn.com/t/font_726734_euokevd6tze.css">
 		<style>
 			*{
@@ -79,6 +80,7 @@ if (!$user_ID) { //判断用户是否登录
 			#result{
 				height: 5rem;
 				width: 20rem;
+              	max-width:100%;
 				display: flex;
 				justify-content: center;
 				align-items: center;
@@ -93,6 +95,7 @@ if (!$user_ID) { //判断用户是否登录
 			}
 			#wp_login_form{
 				width: 20rem;
+              	max-width:100%;
 			}
 			#wp_login_form .text{
 				height: 2.5rem;

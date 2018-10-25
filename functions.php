@@ -7,6 +7,7 @@ header('Access-Control-Allow-Headers:*'); // 响应头设置
   $allow=array(
       $general_options["qinmei_allow_site_web"],
       $general_options["qinmei_allow_site_mobile"],
+      $_SERVER['HTTP_ORIGIN'],
       'https://nginx.qinvz.cn',
       'https://qinvz.cn',
   );
@@ -18,18 +19,15 @@ header('Access-Control-Allow-Headers:*'); // 响应头设置
     require get_template_directory() . '/qinmei/longpost.php';
     require get_template_directory() . '/qinmei/comment.php';
     require get_template_directory() . '/qinmei/user.php';
-    require get_template_directory() . '/qinmei/function.php';
     require get_template_directory() . '/qinmei/setting.php';
     require get_template_directory() . '/qinmei/others.php';
   }
 
-
+require get_template_directory() . '/qinmei/function.php';
 add_theme_support( 'post-thumbnails' );
 
-if( current_user_can( 'manage_options' ) ) {
-  add_action( 'admin_action_qinmei_update', 'qinmei_update' );
-  add_action( 'admin_action_qinmei_create_animate', 'qinmei_create_animate' );
-}
+add_action( 'admin_action_qinmei_update', 'qinmei_update' );
+add_action( 'admin_action_qinmei_create_animate', 'qinmei_create_animate' );
 
 add_filter('comment_form_default_fields', 'mytheme_remove_url');
 
