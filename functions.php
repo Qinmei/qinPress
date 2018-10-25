@@ -7,7 +7,6 @@ header('Access-Control-Allow-Headers:*'); // 响应头设置
   $allow=array(
       $general_options["qinmei_allow_site_web"],
       $general_options["qinmei_allow_site_mobile"],
-      $_SERVER['HTTP_ORIGIN'],
       'https://nginx.qinvz.cn',
       'https://qinvz.cn',
   );

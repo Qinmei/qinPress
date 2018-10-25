@@ -634,6 +634,14 @@ $ashu_options[] = array(
 );
 
 $ashu_options[] = array(
+  'name' => '统计代码',
+  'id'   => 'qinmei_tongji_link',
+  'desc' => '只支持百度统计，输入hm.src后面的网址即可',
+  'std'  => '',
+  'type' => 'text'
+);
+
+$ashu_options[] = array(
   'name' => '',
   'type' => 'close' //Look here
 );
