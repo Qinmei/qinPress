@@ -1,24 +1,44 @@
 <?php
-$general_options = get_option('ashuwp_general');
-header("Content-Type:text/html;charset=utf8"); 
-header('Access-Control-Allow-Methods:POST');// 响应类型  
-header('Access-Control-Allow-Headers:*'); // 响应头设置 
+require get_template_directory() . '/ashuwp_framework/ashuwp_framework_core.php'; //加载ashuwp_framework框架
+require get_template_directory() . '/ashuwp_framework/config-example.php'; //加载配置数据，config-example.php为配置范例。
 
-  $allow=array(
-      $general_options["qinmei_allow_site_web"],
-      $general_options["qinmei_allow_site_mobile"],
-  );
+
+add_action( 'rest_api_init', function() {
+    
+  remove_filter( 'rest_pre_serve_request', 'rest_send_cors_headers' );
+  add_filter( 'rest_pre_serve_request', function( $value ) {
+    header("Content-Type:text/html;charset=utf8"); 
+    header( 'Access-Control-Allow-Methods: POST, GET, OPTIONS, PUT, DELETE' );
+    header('Access-Control-Allow-Headers:*');
+    header( 'Access-Control-Allow-Credentials: true' );
+
+    $general_options = get_option('ashuwp_general');
+    $allow=array(
+      stripslashes($general_options["qinmei_allow_site_web"]),
+      stripslashes($general_options["qinmei_allow_site_mobile"]),
+    );
+
+
+
+    $origin = isset($_SERVER['HTTP_ORIGIN'])? $_SERVER['HTTP_ORIGIN'] : '';
+    if (in_array($origin, $allow)) {
+      header("Access-Control-Allow-Origin:".$origin);
+    }
+
+    return $value;
+    
+  });
+}, 15 ); 
+
+
   
-  $origin = isset($_SERVER['HTTP_ORIGIN'])? $_SERVER['HTTP_ORIGIN'] : '';
-  if (in_array($origin, $allow)) {
-    header("Access-Control-Allow-Origin:".$origin);
-    require get_template_directory() . '/qinmei/animate.php';
-    require get_template_directory() . '/qinmei/longpost.php';
-    require get_template_directory() . '/qinmei/comment.php';
-    require get_template_directory() . '/qinmei/user.php';
-    require get_template_directory() . '/qinmei/setting.php';
-    require get_template_directory() . '/qinmei/others.php';
-  }
+
+require get_template_directory() . '/qinmei/animate.php';
+require get_template_directory() . '/qinmei/longpost.php';
+require get_template_directory() . '/qinmei/comment.php';
+require get_template_directory() . '/qinmei/user.php';
+require get_template_directory() . '/qinmei/setting.php';
+require get_template_directory() . '/qinmei/others.php';
 
 require get_template_directory() . '/qinmei/function.php';
 add_theme_support( 'post-thumbnails' );
@@ -133,11 +153,6 @@ add_action('login_enqueue_scripts','login_protection');
 function login_protection(){
   wp_redirect(site_url());
 }
-
-
-
-require get_template_directory() . '/ashuwp_framework/ashuwp_framework_core.php'; //加载ashuwp_framework框架
-require get_template_directory() . '/ashuwp_framework/config-example.php'; //加载配置数据，config-example.php为配置范例。
 
 
 
