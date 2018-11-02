@@ -16,6 +16,7 @@ add_action( 'rest_api_init', function() {
     $allow=array(
       stripslashes($general_options["qinmei_allow_site_web"]),
       stripslashes($general_options["qinmei_allow_site_mobile"]),
+      'https://qinvz.cn',
     );
 
 

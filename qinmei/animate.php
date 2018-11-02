@@ -260,7 +260,7 @@ function get_play_link_info($request){
 
   if($showplay == true){
 
-    if($setting == true){
+    if($setting == 'true'){
 
       $totallink = $baseaddress.$playlink;
 
