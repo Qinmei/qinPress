@@ -1127,34 +1127,4 @@ $ashu_options[] = array(
   'type' => 'close' //Look here
 );
 
-
-$ashu_options[] = array(
-  'name' => '授权访问',
-  'id'   => 'qinmei_allow_site',
-  'type' => 'open' //Look here
-);
-
-
-$ashu_options[] = array(
-  'name' => '电脑端网址',
-  'id'   => 'qinmei_allow_site_web',
-  'desc' => '写全, 带http这些, 只能写一个',
-  'std'  => '',
-  'type' => 'text'
-);
-
-$ashu_options[] = array(
-  'name' => '手机端网址',
-  'id'   => 'qinmei_allow_site_mobile',
-  'desc' => '写全, 带http这些, 只能写一个',
-  'std'  => '',
-  'type' => 'text'
-);
-
-
-$ashu_options[] = array(
-  'name' => '',
-  'type' => 'close' //Look here
-);
-
 $option_page = new ashuwp_options_feild($ashu_options, $page_info);
