@@ -1127,4 +1127,24 @@ $ashu_options[] = array(
   'type' => 'close' //Look here
 );
 
+
+$ashu_options[] = array(
+  'name' => '授权访问',
+  'id'   => 'qinmei_allow_site',
+  'type' => 'open' //Look here
+);
+
+$ashu_options[] = array(
+  'name' => '授权码',
+  'id'   => 'qinmei_allow_site_key',
+  'desc' => '写上前端主题自带的授权码',
+  'std'  => '',
+  'type' => 'text'
+);
+
+$ashu_options[] = array(
+  'name' => '',
+  'type' => 'close' //Look here
+);
+
 $option_page = new ashuwp_options_feild($ashu_options, $page_info);

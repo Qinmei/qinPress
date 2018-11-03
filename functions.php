@@ -2,6 +2,31 @@
 require get_template_directory() . '/ashuwp_framework/ashuwp_framework_core.php'; //加载ashuwp_framework框架
 require get_template_directory() . '/ashuwp_framework/config-example.php'; //加载配置数据，config-example.php为配置范例。
 
+
+
+add_action( 'rest_api_init', function() {
+    
+  add_filter( 'rest_pre_serve_request', function( $value ) {
+
+    $general_options = get_option('ashuwp_general');
+    $allowkey = stripslashes($general_options["qinmei_allow_site_key"]);
+    date_default_timezone_set("Asia/Shanghai");
+    $time = date("Y-m-d-h");
+
+    $allowkey = md5('qinmei-'.$time.'-'.$allowkey);
+
+    $webkey = isset($_GET['key'])? $_GET['key'] : '';
+
+    if ($allowkey == $webkey) {
+      return $value;
+    }else{
+      return '404';
+    };
+    
+  });
+}, 15 ); 
+
+
 require get_template_directory() . '/qinmei/animate.php';
 require get_template_directory() . '/qinmei/longpost.php';
 require get_template_directory() . '/qinmei/comment.php';
