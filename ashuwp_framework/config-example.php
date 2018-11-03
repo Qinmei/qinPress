@@ -1133,23 +1133,20 @@ $ashu_options[] = array(
   'id'   => 'qinmei_allow_site',
   'type' => 'open' //Look here
 );
-
 $ashu_options[] = array(
-  'name' => '授权站点名',
-  'id'   => 'qinmei_allow_site_name',
-  'desc' => '写上前端主题的站点名，结合授权码生成认证key',
+  'name' => '电脑端网址',
+  'id'   => 'qinmei_allow_site_web',
+  'desc' => '写全, 带http这些, 只能写一个',
   'std'  => '',
   'type' => 'text'
 );
-
 $ashu_options[] = array(
-  'name' => '授权码',
-  'id'   => 'qinmei_allow_site_key',
-  'desc' => '写上前端主题自带的授权码',
+  'name' => '手机端网址',
+  'id'   => 'qinmei_allow_site_mobile',
+  'desc' => '写全, 带http这些, 只能写一个',
   'std'  => '',
   'type' => 'text'
 );
-
 $ashu_options[] = array(
   'name' => '',
   'type' => 'close' //Look here

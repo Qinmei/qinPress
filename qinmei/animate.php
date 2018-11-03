@@ -285,7 +285,7 @@ function get_play_link_info($request){
         if(!empty($patterns)){
           foreach($patterns as $pattern){
               $pattern_p = $pattern['qinmei_play_jiexi_pattern_p'];
-              if (preg_match($pattern_p,$str)) {
+              if (preg_match($pattern_p,$playlink)) {
                 $jiexiarr[] = $pattern['qinmei_play_jiexi_pattern_j'];
                 $patterncount ++;
               };
