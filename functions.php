@@ -6,26 +6,25 @@ require get_template_directory() . '/ashuwp_framework/config-example.php'; //加
 
 add_action( 'rest_api_init', function() {
     
+  remove_filter( 'rest_pre_serve_request', 'rest_send_cors_headers' );
   add_filter( 'rest_pre_serve_request', function( $value ) {
-
+    header("Content-Type:text/html;charset=utf8"); 
+    header( 'Access-Control-Allow-Methods: POST, GET, OPTIONS, PUT, DELETE' );
+    header('Access-Control-Allow-Headers:*');
+    header( 'Access-Control-Allow-Credentials: true' );
     $general_options = get_option('ashuwp_general');
-    $allowkey = stripslashes($general_options["qinmei_allow_site_key"]);
-    $allowsite = stripslashes($general_options["qinmei_allow_site_name"]);
-    date_default_timezone_set("Asia/Shanghai");
-    $time = date("Y-m-d-H");
-
-    $allowkey = md5($allowsite.'-'.$time.'-'.$allowkey);
-
-    $webkey = isset($_GET['key'])? $_GET['key'] : '';
-    
-    if ($allowkey == $webkey) {
-      return $value;
-    }else{
-      return '404';
-    };
+    $allow=array(
+      stripslashes($general_options["qinmei_allow_site_web"]),
+      stripslashes($general_options["qinmei_allow_site_mobile"]),
+    );
+    $origin = isset($_SERVER['HTTP_ORIGIN'])? $_SERVER['HTTP_ORIGIN'] : '';
+    if (in_array($origin, $allow)) {
+      header("Access-Control-Allow-Origin:".$origin);
+    }
+    return $value;
     
   });
-}, 15 ); 
+}, 15 );
 
 
 require get_template_directory() . '/qinmei/animate.php';
