@@ -12,12 +12,12 @@ add_action( 'rest_api_init', function() {
     $allowkey = stripslashes($general_options["qinmei_allow_site_key"]);
     $allowsite = stripslashes($general_options["qinmei_allow_site_name"]);
     date_default_timezone_set("Asia/Shanghai");
-    $time = date("Y-m-d-h");
+    $time = date("Y-m-d-H");
 
     $allowkey = md5($allowsite.'-'.$time.'-'.$allowkey);
 
     $webkey = isset($_GET['key'])? $_GET['key'] : '';
-
+    
     if ($allowkey == $webkey) {
       return $value;
     }else{

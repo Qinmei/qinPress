@@ -2,7 +2,6 @@
 
 function get_qinmei_config_output() {
   $general_options = get_option('ashuwp_general');
-  $qconfig = array();
   $qconfig["color"] = $general_options["qinmei_base_color"];
   $qconfig["name"] = $general_options["qinmei_name"];
   $qconfig["slogan"] = $general_options["qinmei_slogan"];
