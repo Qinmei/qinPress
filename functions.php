@@ -10,10 +10,11 @@ add_action( 'rest_api_init', function() {
 
     $general_options = get_option('ashuwp_general');
     $allowkey = stripslashes($general_options["qinmei_allow_site_key"]);
+    $allowsite = stripslashes($general_options["qinmei_allow_site_name"]);
     date_default_timezone_set("Asia/Shanghai");
     $time = date("Y-m-d-h");
 
-    $allowkey = md5('qinmei-'.$time.'-'.$allowkey);
+    $allowkey = md5($allowsite.'-'.$time.'-'.$allowkey);
 
     $webkey = isset($_GET['key'])? $_GET['key'] : '';
 

@@ -1135,6 +1135,14 @@ $ashu_options[] = array(
 );
 
 $ashu_options[] = array(
+  'name' => '授权站点名',
+  'id'   => 'qinmei_allow_site_name',
+  'desc' => '写上前端主题的站点名，结合授权码生成认证key',
+  'std'  => '',
+  'type' => 'text'
+);
+
+$ashu_options[] = array(
   'name' => '授权码',
   'id'   => 'qinmei_allow_site_key',
   'desc' => '写上前端主题自带的授权码',
