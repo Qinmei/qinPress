@@ -221,9 +221,6 @@ function aniamte_getinfo($request = null) {
 
 	$url = '';
 	$type = '';
-	$code = '';
-	$year = '';
-	$month = '';
 	$kind = '';
 	if(!empty($_POST['url'])){
 	  $url = $_POST['url'];
@@ -237,23 +234,8 @@ function aniamte_getinfo($request = null) {
 	  $kind = $_POST['kind'];
 	}
 
-	if(!empty($_POST['code'])){
-	   $code = $_POST['code']; 
-	}
-	  
-	if(!empty($_POST['year'])){
-	   $year = $_POST['year']; 
-	}
-	if(!empty($_POST['month'])){
-	    $month = sprintf("%02d",$_POST['month'] );
-	}
-
     if($kind == 'index'){
       return getindex($type,$url);
-    }else if($kind == 'new'){
-      return getnew($code,$year,$month);
-    }else if($kind == 'validate'){
-      return '404';
     }
 
 }
@@ -291,7 +273,7 @@ function getindex($type,$url){
 function getnew($code,$year,$month){
   switch($code){
     case 'qinmei2021':
-      getjson($year,$month);
+      return getjson($year,$month);
       break;
     default:
       echo "参数错误";
@@ -404,17 +386,4 @@ function getbgm($url){
   	return $data;
   
 }
-
-
-function getjson($year,$month){
-  $index = get_template_directory() . '/qinmei_animate/bangumi-data/data/items/'.$year.'/'.$month.'.json';
-  $indexnum = $year.$month.'000';
-  $data= file_get_contents($index); 
-  $animate = array(
-    "num" => $indexnum,
-    "qinmei2021"=> json_decode($data)
-    );
-  return $animate;
-}
-
 

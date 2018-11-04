@@ -13,11 +13,6 @@ function request($url,$posts)
 
       $curl = curl_init();
 
-      $origin = $_SERVER['HTTP_REFERER'];
-
-      $origin = array(
-        "Origin:".explode("/wp-admin",$origin)[0]
-      );
 
       $options = array(
                      CURLOPT_URL=>$url,
@@ -25,7 +20,6 @@ function request($url,$posts)
                      CURLOPT_TIMEOUT => 10,
                      CURLOPT_RETURNTRANSFER => true,
                      CURLOPT_POST => 1,
-                     CURLOPT_HTTPHEADER=>$origin,
                      CURLOPT_POSTFIELDS=>$posts,
                      CURLOPT_USERAGENT=>'Mozilla/5.0 (Windows NT 5.1; rv:5.0) Gecko/20100101 Firefox/5.0'
                     );
@@ -41,19 +35,7 @@ function request($url,$posts)
 function qinmei_init(){
 
   $pagecreate = array(
-      array('name'=>'all','title' =>'所有番剧'),
-      array('name'=>'arrival','title' =>'最新上架'),
-      array('name'=>'discuss','title' =>'动态讨论'),
-      array('name'=>'history','title' =>'历史纪录'),
-      array('name'=>'info','title' =>'关于我们'),
-      array('name'=>'new','title' =>'新番'),
-      array('name'=>'rate','title' =>'评分排行'),
-      array('name'=>'recommend','title' =>'推荐番剧'),
-      array('name'=>'topic','title' =>'分类页面'),
-      array('name'=>'user','title' =>'用户面板'),
-      array('name'=>'error','title' =>'视频报错'),
-      array('name'=>'error2','title' =>'上架请求'),
-      array('name'=>'play','title' =>'播放页面')
+      array('name'=>'discuss','title' =>'动态讨论')
   );
 
   foreach($pagecreate as $page){
@@ -125,13 +107,13 @@ $general_options = get_option('ashuwp_general');
 $year =  $general_options['qinmei_animate_add_year'];
 $month = $general_options['qinmei_animate_add_month'];
 
-$url= request('https://api.qinmei.org/index.php',array('year'=>$year,'month'=>$month,'code'=>'qinmei2021','kind'=>'new'));
+$index = get_template_directory() . '/qinmei_animate/bangumi-data/data/items/'.$year.'/'.$month.'.json';
+$data= file_get_contents($index); 
 
-$data = json_decode($url,true);
+$data2 = json_decode($data,true);
+$countnum = 0;
 
-$countnum = 101700;
-
-foreach ( $data['qinmei2021'] as $unit ){
+foreach ( $data2 as $unit ){
 
    $countnum++;
    $count = sprintf("%06d", $countnum );
@@ -236,12 +218,13 @@ foreach ( $data['qinmei2021'] as $unit ){
     }
 
     if(!empty($bangumiid)){
-      $url = 'https://api.qinmei.org';
+      $url =  get_site_url().'/wp-json/wp/v2/qinmei/getwebinfo';
       $posts = array('url'=>$bangumiid,
                      'type'=>'bgm',
                      'kind'=>'index'
                      );
       $data = json_decode(request($url,$posts),true);
+
       if($data['name_cn'] !== ''){
         $title = $data['name_cn'];
       }
@@ -281,7 +264,7 @@ foreach ( $data['qinmei2021'] as $unit ){
       $recommend = $data['blog']['summary'];
 
       $geturl = '';
-      $apiurl =  'https://api.qinmei.org';
+      $apiurl =   get_site_url().'/wp-json/wp/v2/qinmei/getwebinfo';
 
        if(!empty( $qqid)){
         $geturl = 'https://v.qq.com/detail/'.$qqid.'.html';
@@ -470,7 +453,7 @@ function qinmei_update(){
   while ($the_query->have_posts()) : $the_query->the_post();
     $count = 0;
     $ID = get_the_ID();
-    $apiurl =  'https://api.qinmei.org';
+    $apiurl = get_site_url().'/wp-json/wp/v2/qinmei/getwebinfo';
 
     $dilidili = get_post_meta($ID,"baseinfo_play_dilidili",true);
     if(!empty($dilidili)){

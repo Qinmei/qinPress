@@ -4,6 +4,12 @@
 
 **主要注意的是本主题仅为后台，前台主题请自行编写。**
 
+### 注意事项
+
+1. Qinmeiorg/ashuwp_framework/js/ashuwp_framework.js里面前几行有个baseurl需要配置为自己的域名。
+
+2. 动漫的获取其他网站信息请参考bangumi-data的设定，或者导入动漫之后再获取信息。
+
 
 ### 配套前端主题
 
