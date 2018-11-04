@@ -3,6 +3,10 @@
 *Author url: http://www.ashuwp.com
 *Version: 6.2
 **/
+
+var baseurl = 'http://qinmeiss.com';
+
+
 jQuery(document).ready(function($){
   var upload_frame,
       gallery_frame;
@@ -463,7 +467,7 @@ function getbgminfo(){
   var subjectID = $('#baseinfo_play_bangumi').val();
   $.ajax({
    type: "POST",
-   url: "https://api.qinmei.org/index.php",
+   url: baseurl + '/wp-json/wp/v2/qinmei/getwebinfo',
    data:{
     type:'bgm',
     kind:'index',
@@ -578,7 +582,7 @@ function getepisodeinfo(type){
   var episode = $("#baseinfo_episode .ashuwp_field.ashuwp_group_field.ashuwp_field_group");
   var confirm = episode.find(".multiple_item.multiple_group_item");
    $.ajax({
-        url: 'https://api.qinmei.org',
+        url: baseurl + '/wp-json/wp/v2/qinmei/getwebinfo',
         type: 'POST',
         data:{
           url:link,
@@ -586,7 +590,7 @@ function getepisodeinfo(type){
           kind:'index',
         },
         success: function (data) {
-          console.log("succes");
+          console.log("succes",data);
           var video = JSON.parse(data);
          for(var i = 0;i<video.length;i++){
           if(confirm.eq(i).length >0){}else{
@@ -607,7 +611,7 @@ function getepisodeinfo(type){
 $(function(){
   var create = '<a class="page-title-action qinmei-search-action">聚合搜索</a>'
   var animate = $(".wp-heading-inline").text();
-  if(animate === '编辑动漫'){
+  if(animate === '编辑动漫' || animate === '新建一个动漫'){
     $(".wp-heading-inline").append(create);
   }
 });
@@ -651,12 +655,12 @@ $(document).on("click",".qinmei-search-action", function() {
   var title = $("#titlewrap input").val();
   $.ajax({
    type: "GET",
-   url: "https://api.qinmei.org/search.php",
+   url: baseurl + '/wp-json/wp/v2/qinmei/search',
    data: "title=" + title,
    success: function(msg){
     console.log(msg);
     $(".main-right-list").empty();
-     var data = JSON.parse(msg);
+     var data = msg;
      var dilidili = data.dilidili;
      var bilibili = data.bilibili;
      var xsjdm = data.xsjdm;
@@ -765,7 +769,7 @@ $(document).on("click",".qinmei-search-action", function() {
     }else{$(".main-right-list").eq(9).append('暂无搜索结果')};
    },
     error:function(msg){
-        $(".main-right-list").append('搜索失败，可能域名未授权或者没有结果');
+        $(".main-right-list").append('搜索失败，可能没有结果');
     }
 });
   $("html").append(tab);

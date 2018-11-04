@@ -34,7 +34,7 @@ require get_template_directory() . '/qinmei/comment.php';
 require get_template_directory() . '/qinmei/user.php';
 require get_template_directory() . '/qinmei/setting.php';
 require get_template_directory() . '/qinmei/others.php';
-
+require get_template_directory() . '/qinmei/initAnimate.php';
 require get_template_directory() . '/qinmei/function.php';
 add_theme_support( 'post-thumbnails' );
 
