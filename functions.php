@@ -10,7 +10,7 @@ add_action( 'rest_api_init', function() {
   add_filter( 'rest_pre_serve_request', function( $value ) {
     header("Content-Type:text/html;charset=utf8"); 
     header( 'Access-Control-Allow-Methods: POST, GET, OPTIONS, PUT, DELETE' );
-    header('Access-Control-Allow-Headers:*');
+    header('Access-Control-Allow-Headers: Authorization,Origin, X-Requested-With, Content-Type, Accept');
     header( 'Access-Control-Allow-Credentials: true' );
     $general_options = get_option('ashuwp_general');
     $allow=array(
