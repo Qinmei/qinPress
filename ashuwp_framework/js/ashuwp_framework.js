@@ -491,8 +491,8 @@ function getbgminfo(){
     var txt14 = $("#baseinfo_commend");
     var txt15 = $("#baseinfo_img_link");
 
-    txt1 = resdata.name_cn;
-    txt2 = resdata.summary;
+    txt1.val( resdata.name_cn );
+    txt2.val( resdata.summary );
 
     try {
         var staff = resdata.staff.map(function(item){
