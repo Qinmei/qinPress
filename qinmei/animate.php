@@ -22,9 +22,9 @@ function filter_animate_json( $data, $post, $context ) {
       $tags[] = $tag->name;
   };
   
-  $baseinfo_simg = esc_html( get_post_meta( $post->ID, 'baseinfo_simg_link' ));
+  $baseinfo_simg = esc_html( get_post_meta( $post->ID, 'baseinfo_simg_link', true  ));
   if($baseinfo_simg == ''){
-  	$baseinfo_simg = esc_html(get_the_post_thumbnail_url($post->ID))
+  	$baseinfo_simg = esc_html(get_the_post_thumbnail_url($post->ID));
   }
 	  
   
