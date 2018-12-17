@@ -22,6 +22,12 @@ function filter_animate_json( $data, $post, $context ) {
       $tags[] = $tag->name;
   };
   
+  $baseinfo_simg = esc_html( get_post_meta( $post->ID, 'baseinfo_simg_link ));
+  if($baseinfo_simg == ''){
+  	$baseinfo_simg = esc_html(get_the_post_thumbnail_url($post->ID))
+  }
+	  
+  
   //以下是要添加的自定义字段
   $data->data['baseinfo_actor'] = esc_html( get_post_meta( $post->ID, 'baseinfo_actor', true ) );
   $data->data['baseinfo_director'] = esc_html( get_post_meta( $post->ID, 'baseinfo_director', true ) );
