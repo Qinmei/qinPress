@@ -22,7 +22,7 @@ function filter_animate_json( $data, $post, $context ) {
       $tags[] = $tag->name;
   };
   
-  $baseinfo_simg = esc_html( get_post_meta( $post->ID, 'baseinfo_simg_link ));
+  $baseinfo_simg = esc_html( get_post_meta( $post->ID, 'baseinfo_simg_link' ));
   if($baseinfo_simg == ''){
   	$baseinfo_simg = esc_html(get_the_post_thumbnail_url($post->ID))
   }
@@ -38,7 +38,7 @@ function filter_animate_json( $data, $post, $context ) {
   $data->data['baseinfo_rate_num'] = esc_html( get_post_meta( $post->ID, 'baseinfo_rate_num', true ) );
   $data->data['baseinfo_commend'] = esc_html( get_post_meta( $post->ID, 'baseinfo_commend', true ) );
   $data->data['baseinfo_img_link'] = esc_html( get_post_meta( $post->ID, 'baseinfo_img_link', true ) );
-  $data->data['baseinfo_simg_link'] = esc_html(get_the_post_thumbnail_url($post->ID));
+  $data->data['baseinfo_simg_link'] = $baseinfo_simg;
   $data->data['baseinfo_episode_con'] =  $neweposide;
   $data->data['baseinfo_season'] =  get_post_meta( $post->ID, 'baseinfo_season', true );
   $data->data['play_relative'] =  get_post_meta( $post->ID, 'baseinfo_season_con', true );
