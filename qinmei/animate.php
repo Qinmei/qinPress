@@ -371,5 +371,13 @@ function prefix_rest_orderby_rand( $params ) {
     return $params;
 }
 
+add_filter( 'rest_animate_collection_params', 'my_prefix_change_post_per_page', 10, 1 );
 
+function my_prefix_change_post_per_page( $params ) {
+    if ( isset( $params['per_page'] ) ) {
+        $params['per_page']['maximum'] = 1000;
+    }
+
+    return $params;
+}
 
