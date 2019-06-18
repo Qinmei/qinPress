@@ -24,6 +24,7 @@ require get_template_directory() . '/qinmei/user.php';
 require get_template_directory() . '/qinmei/setting.php';
 require get_template_directory() . '/qinmei/others.php';
 require get_template_directory() . '/qinmei/function.php';
+require get_template_directory() . '/util/index.php';
 add_theme_support( 'post-thumbnails' );
 
 
@@ -530,9 +531,17 @@ $existing_mimes['jpg|jpeg|gif|png']='image/image';//允许用户上传jpg，gif�
 return $existing_mimes;
 }
 
-
-
 show_admin_bar(false);
+
+function salong_disable_wp_tailoring( $sizes ){
+  unset( $sizes[ 'thumbnail' ]);//缩略图大小
+  unset( $sizes[ 'medium' ]);//中等大小
+  unset( $sizes[ 'medium_large' ] );//这张就是自动生成的768图片选项
+  unset( $sizes[ 'large' ]);//大尺寸
+  unset( $sizes[ 'full' ] );//全尺寸
+  return $sizes;
+}
+add_filter( 'intermediate_image_sizes_advanced', 'salong_disable_wp_tailoring' );
 
 
 

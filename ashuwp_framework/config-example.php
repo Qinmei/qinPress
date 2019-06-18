@@ -20,6 +20,14 @@ $meta_conf = array(
 
 $ashu_meta = array();
 
+$ashu_meta[] = array(
+  'name' => 'bangumi',
+  'id'   => 'baseinfo_play_bangumi',
+  'desc' => '<a class="button" id="baseinfo-bangumi-get-btn">获取ID信息</a>',
+  'std'  => '',
+  'type' => 'text'
+);
+
 
 $ashu_meta[] = array(
   'name' => '豆瓣地址',
@@ -130,6 +138,14 @@ $ashu_meta[] = array(
 $ashu_meta[] = array(
   'name' => '评分人数',
   'id'   => 'baseinfo_rate_num',
+  'desc' => '',
+  'std'  => '',
+  'type' => 'text'
+);
+
+$ashu_meta[] = array(
+  'name' => '点评',
+  'id'   => 'baseinfo_commend',
   'desc' => '',
   'std'  => '',
   'type' => 'text'
