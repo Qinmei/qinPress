@@ -1,0 +1,11 @@
+/*
+Theme Name: QinPress
+Theme URI: https://qinmei.video
+Description: 由qinmei开发的一套动漫视频主题, 演示地址:https://qinmei.video, github地址:https://github.com/qinvz/qinpress,
+Version: 3.0
+Author: Qinmei
+*/
+*:not(input){
+	margin: 0;
+	padding: 0;
+}
