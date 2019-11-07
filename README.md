@@ -31,3 +31,15 @@
 |----www.qinmei.video    //PC 主站点，电脑访问自动跳转
 |----m.qinmei.video      //移动端主题站点，自动跳转
 ```
+
+### 主题预览
+
+![picture](https://raw.githubusercontent.com/Qinmei/qinpress/3.0/picture/18.PNG)
+![picture](https://raw.githubusercontent.com/Qinmei/qinpress/3.0/picture/19.PNG)
+![picture](https://raw.githubusercontent.com/Qinmei/qinpress/3.0/picture/20.PNG)
+![picture](https://raw.githubusercontent.com/Qinmei/qinpress/3.0/picture/21.PNG)
+![picture](https://raw.githubusercontent.com/Qinmei/qinpress/3.0/picture/22.PNG)
+![picture](https://raw.githubusercontent.com/Qinmei/qinpress/3.0/picture/23.PNG)
+![picture](https://raw.githubusercontent.com/Qinmei/qinpress/3.0/picture/24.PNG)
+![picture](https://raw.githubusercontent.com/Qinmei/qinpress/3.0/picture/25.PNG)
+![picture](https://raw.githubusercontent.com/Qinmei/qinpress/3.0/picture/26.PNG)
